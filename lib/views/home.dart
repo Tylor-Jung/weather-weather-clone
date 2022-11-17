@@ -3,14 +3,53 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:weather_weather_clone/core/controller/home_controller.dart';
+import 'package:weather_weather_clone/core/controller/weather_controller.dart';
 import 'package:weather_weather_clone/views/components/tab_bar/widget/tab_bar_components.dart';
 import 'package:weather_weather_clone/views/components/tab_bar/widget/tab_bar_view_components.dart';
 
-class Home extends GetView<HomeController> {
-  Home({super.key});
+class Home extends StatefulWidget {
+  Home({this.parseWeatherData});
 
+  final dynamic parseWeatherData;
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   HomeController homeController = Get.put(HomeController());
-  int _current = 0;
+  WeatherController weatherController = Get.put(WeatherController());
+  final int _current = 0;
+
+  // 도시이름
+  String? cityName;
+  // 온도
+  double? temp;
+  // 바람
+  double? wind;
+  // 습도
+  double? humidity;
+  // 최소기온
+  double? minTemp;
+  // 최대기온
+  double? maxTemp;
+
+  @override
+  void initState() {
+    super.initState();
+    updateData(widget.parseWeatherData);
+    print(temp);
+    print(cityName);
+  }
+
+  void updateData(dynamic weatherData) {
+    cityName = weatherData['name'];
+    wind = weatherData['wind']['speed'];
+    temp = weatherData['main']['temp'];
+    humidity = weatherData['main']['humidity'];
+    minTemp = weatherData['main']['minTemp'];
+    maxTemp = weatherData['main']['maxTemp'];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,8 +114,7 @@ class Home extends GetView<HomeController> {
                                         color: Colors.white, fontSize: 15),
                                   ), // 현재위치 text
                                   Text(
-                                    'Donvale',
-                                    // homeController.getPosition.toString(),
+                                    '$cityName',
                                     style: const TextStyle(
                                         color: Colors.white, fontSize: 30),
                                   ), // 현재위치 API 불러오기 => locale

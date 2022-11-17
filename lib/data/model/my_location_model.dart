@@ -14,10 +14,8 @@ class MyLocation {
           desiredAccuracy: LocationAccuracy.high);
       myLatitude = myLocation.latitude;
       myLongitude = myLocation.longitude;
-      print(myLocation);
     } catch (e) {
       const Text('인터넷 연결에 문제가 발생했습니다.');
-      print('인터넷 연결에 문제가 발생했습니다.');
     }
   }
 }
