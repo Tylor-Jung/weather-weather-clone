@@ -75,7 +75,7 @@ class _HomeState extends State<Home> {
                                     MainAxisAlignment.spaceAround,
                                 children: [
                                   const Text(
-                                    '(현재위치)',
+                                    '(현재 위치)',
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 15),
                                   ), // 현재위치 text
@@ -83,34 +83,34 @@ class _HomeState extends State<Home> {
                                     '${weatherController.cityName}',
                                     style: const TextStyle(
                                         color: Colors.white, fontSize: 30),
-                                  ), // 현재위치 API 불러오기 => locale
-                                  // ignore: prefer_const_constructors
+                                  ),
                                   Text(
-                                    '맑음',
+                                    '${weatherController.description}',
                                     style: const TextStyle(
                                         color: Colors.white, fontSize: 15),
                                   ), // 실시간 날씨
                                   SizedBox(
                                     child: SvgPicture.asset(
                                       'assets/svg/climacon-sun.svg',
+                                      fit: BoxFit.cover,
                                       color: Colors.white,
                                       width: 80,
                                       height: 80,
                                     ),
                                   ), // 날씨상황을 나타내는 이미지
-                                  const Text(
-                                    'xx℃',
-                                    style: TextStyle(
+                                  Text(
+                                    '${weatherController.temp}℃',
+                                    style: const TextStyle(
                                         color: Colors.white, fontSize: 30),
                                   ), // 실제온도
                                   const Text(
                                     '어제보다 x℃ 가 높아요',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 15),
+                                        color: Colors.black, fontSize: 15),
                                   ), // 어제와 비교, 높아요/낮아요
-                                  const Text(
-                                    '최고 xx℃ / 최저 xx℃',
-                                    style: TextStyle(
+                                  Text(
+                                    '최고 ${weatherController.maxTemp}℃ / 최저 ${weatherController.minTemp}℃',
+                                    style: const TextStyle(
                                         color: Colors.white, fontSize: 15),
                                   ),
                                   const SizedBox(height: 5),

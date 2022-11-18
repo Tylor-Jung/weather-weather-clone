@@ -1,19 +1,22 @@
 class WeatherModel {
   // 도시이름
-  final String? cityName;
+  String? cityName;
+  // 요약
+  String? description;
   // 온도
-  final double? temp;
-  // 바람
-  final double? wind;
-  // 습도
-  final double? humidity;
+  double? temp;
   // 최소기온
-  final double? minTemp;
+  double? minTemp;
   // 최대기온
-  final double? maxTemp;
+  double? maxTemp;
+  // 습도
+  double? humidity;
+  // 바람
+  double? wind;
 
   WeatherModel({
     this.cityName,
+    this.description,
     this.temp,
     this.wind,
     this.humidity,
@@ -24,11 +27,12 @@ class WeatherModel {
   factory WeatherModel.fromJson(Map<String, dynamic> json) {
     return WeatherModel(
       cityName: json['name'],
+      description: json['weather'][0]['description'],
       temp: json['main']['temp'],
-      wind: json['wind']['speed'],
+      minTemp: json['main']['temp_min'],
+      maxTemp: json['main']['temp_max'],
       humidity: json['main']['humidity'],
-      minTemp: json['main']['minTemp'],
-      maxTemp: json['main']['maxTemp'],
+      wind: json['wind']['speed'],
     );
   }
 }
