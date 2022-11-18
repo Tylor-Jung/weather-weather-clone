@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class HomeController extends GetxController with GetTickerProviderStateMixin {
   // 하단 탭바 컨트롤러
   late TabController tabController;
@@ -36,7 +35,6 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
 
   @override
   void onClose() {
-    // TODO: implement onClose
     tabController.dispose();
     super.onClose();
   }

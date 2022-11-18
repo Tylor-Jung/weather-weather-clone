@@ -8,48 +8,14 @@ import 'package:weather_weather_clone/views/components/tab_bar/widget/tab_bar_co
 import 'package:weather_weather_clone/views/components/tab_bar/widget/tab_bar_view_components.dart';
 
 class Home extends StatefulWidget {
-  Home({this.parseWeatherData});
-
-  final dynamic parseWeatherData;
-
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  HomeController homeController = Get.put(HomeController());
-  WeatherController weatherController = Get.put(WeatherController());
+  final homeController = Get.find<HomeController>();
+  final weatherController = Get.find<WeatherController>();
   final int _current = 0;
-
-  // 도시이름
-  String? cityName;
-  // 온도
-  double? temp;
-  // 바람
-  double? wind;
-  // 습도
-  double? humidity;
-  // 최소기온
-  double? minTemp;
-  // 최대기온
-  double? maxTemp;
-
-  @override
-  void initState() {
-    super.initState();
-    updateData(widget.parseWeatherData);
-    print(temp);
-    print(cityName);
-  }
-
-  void updateData(dynamic weatherData) {
-    cityName = weatherData['name'];
-    wind = weatherData['wind']['speed'];
-    temp = weatherData['main']['temp'];
-    humidity = weatherData['main']['humidity'];
-    minTemp = weatherData['main']['minTemp'];
-    maxTemp = weatherData['main']['maxTemp'];
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +80,7 @@ class _HomeState extends State<Home> {
                                         color: Colors.white, fontSize: 15),
                                   ), // 현재위치 text
                                   Text(
-                                    '$cityName',
+                                    '${weatherController.cityName}',
                                     style: const TextStyle(
                                         color: Colors.white, fontSize: 30),
                                   ), // 현재위치 API 불러오기 => locale

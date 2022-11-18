@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
 class MyLocation {
-  double? myLatitude;
   // 위도
-  double? myLongitude;
+  double? myLatitude;
   // 경도
+  double? myLongitude;
 
   Future<void> getMyCurrentLocation() async {
     try {

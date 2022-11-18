@@ -7,6 +7,7 @@ class MyLocationNetwork {
   MyLocationNetwork(this.url);
 
   Future<dynamic> getJsonData() async {
+    
     http.Response response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       String jsonData = response.body;

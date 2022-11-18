@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class WeatherModel {
   // 도시이름
   final String? cityName;
