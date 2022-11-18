@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:weather_weather_clone/core/controller/weather_controller.dart';
 
 class HumidityScreen extends StatelessWidget {
-  const HumidityScreen({super.key});
+   HumidityScreen({super.key});
+final WeatherController weatherController = Get.put(WeatherController());
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Text(
-        '습도',
-        style: TextStyle(color: Colors.white, fontSize: 20),
+        '${weatherController.humidity}',
+        style: const TextStyle(color: Colors.white, fontSize: 20),
       ),
     );
   }

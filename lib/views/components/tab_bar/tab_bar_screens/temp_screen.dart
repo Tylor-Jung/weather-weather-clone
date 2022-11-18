@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:weather_weather_clone/core/controller/weather_controller.dart';
 import 'package:weather_weather_clone/views/components/tab_bar/widget/hourly_temp.dart';
 
 class TempScreen extends StatelessWidget {
-  const TempScreen({super.key});
+  TempScreen({super.key});
+final WeatherController weatherController = Get.put(WeatherController());
 
   @override
   Widget build(BuildContext context) {

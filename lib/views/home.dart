@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:weather_weather_clone/core/controller/home_controller.dart';
 import 'package:weather_weather_clone/core/controller/weather_controller.dart';
@@ -90,14 +89,10 @@ class _HomeState extends State<Home> {
                                         color: Colors.white, fontSize: 15),
                                   ), // 실시간 날씨
                                   SizedBox(
-                                    child: SvgPicture.asset(
-                                      'assets/svg/climacon-sun.svg',
-                                      fit: BoxFit.cover,
-                                      color: Colors.white,
-                                      width: 80,
-                                      height: 80,
-                                    ),
-                                  ), // 날씨상황을 나타내는 이미지
+                                    height: 100,
+                                    width: 100,
+                                    child: weatherController.icon,
+                                  ), // 날씨상황을 나타내는 아이콘
                                   Text(
                                     '${weatherController.temp}℃',
                                     style: const TextStyle(
@@ -190,20 +185,20 @@ class _HomeState extends State<Home> {
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.blue[300],
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(8),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
                             children: [
                               SizedBox(
-                                child: SvgPicture.asset(
-                                  'assets/svg/climacon-sun.svg',
-                                  color: Colors.white,
-                                  width: 40,
-                                  height: 40,
+                                child: Image.asset(
+                                  'assets/image/bad.png',
+                                  width: 38,
+                                  height: 38,
                                 ),
-                              ), // 미세먼지에 따른 이미지 파일 집어넣기
+                              ),
+                              const SizedBox(width: 5), // 미세먼지에 따른 이미지 파일 집어넣기
                               Column(
                                 children: const [
                                   Text(
@@ -211,9 +206,10 @@ class _HomeState extends State<Home> {
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),
-                                  ), // 미세미세 타이틀
+                                  ),
+                                  SizedBox(height: 4), // 미세미세 타이틀
                                   Text(
-                                    '매우 나쁨',
+                                    '매우나쁨',
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),

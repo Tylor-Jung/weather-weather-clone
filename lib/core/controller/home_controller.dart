@@ -8,7 +8,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
 
   @override
   void onInit() {
-    tabController = TabController(length: 6, vsync: this);
+    tabController = TabController(length: 5, vsync: this);
     super.onInit();
   }
 
@@ -18,9 +18,6 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
     ),
     const Tab(
       child: Text('체감'),
-    ),
-    const Tab(
-      child: Text('자외선'),
     ),
     const Tab(
       child: Text('강수'),
